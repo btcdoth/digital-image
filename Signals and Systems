@@ -1,0 +1,11 @@
+clear
+i=imread("lena.gif");
+i=im2double(i);
+h=fspecial('average',[3,3]);               //replace w 5,5//
+
+filtered=imfilter(i,h,'replicate');
+mse=sum(sum((i-filtered).^2))/size(i,1)*size(i,2));
+display(mse);
+
+psnr=10*log10(1^2/mse);
+display(psnr);
