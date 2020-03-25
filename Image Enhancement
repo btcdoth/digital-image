@@ -1,0 +1,35 @@
+in = imread('Noisy.jpg');
+inf = imread('Noise-free.jpg');
+dn = im2double(in);
+dnf = im2double(inf);
+
+mse = sum(sum((dnf - dn).^2)) / (size(dnf, 1) * size(dnf, 2));
+display(mse);
+
+psnr = 10 * log10(1^2 / mse);
+display(psnr);
+
+subplot(2, 2, 1);
+subimage(dn);
+subplot(2, 2, 2);
+subimage(dnf);
+
+filtered = medfilt2(dn);
+subplot(2, 2, 3);
+subimage(filtered);
+
+mse = sum(sum((dnf - filtered).^2)) / (size(dnf, 1) * size(dnf, 2));
+display(mse);
+
+psnr = 10 * log10(1^2 / mse);
+display(psnr);
+
+filtered2 = medfilt2(filtered);
+subplot(2, 2, 4);
+subimage(filtered2);
+
+mse = sum(sum((dnf - filtered2).^2)) / (size(dnf, 1) * size(dnf, 2));
+display(mse);
+
+psnr = 10 * log10(1^2 / mse);
+display(psnr);
