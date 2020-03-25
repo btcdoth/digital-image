@@ -1,2 +1,3 @@
 # digital-image
-Digital image processing using MATLAB
+Assignments from Coursera course - Fundamentals of Digital Image and Video Processing
+(offered by Northwestern University)
